@@ -27,7 +27,7 @@
 
   <groupId>com.google.cloud.teleport</groupId>
   <artifactId>google-cloud-teleport-java</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>20190304-8b493b9-0.1</version>
   <name>Google Cloud Teleport</name>
   <description>
     Cloud Teleport is a collection of Apache Beam pipelines for common tasks, like data movement
@@ -354,6 +354,11 @@
         <artifactId>os-maven-plugin</artifactId>
         <version>${os-maven-plugin.version}</version>
       </extension>
+      <extension>
+            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <artifactId>google-storage-wagon</artifactId>
+            <version>1.0</version>
+        </extension>
     </extensions>
 
     <pluginManagement>
@@ -629,6 +634,18 @@
       </plugin>
     </plugins>
   </build>
+
+  <!-- PWC ADDITION-->
+  <distributionManagement>
+    <snapshotRepository>
+        <id>gcs-pwc-sandbox-snapshot</id>
+        <url>gs://pwc-sbox-tc01-maven-repo/snapshot</url>
+    </snapshotRepository>
+    <repository>
+        <id>gcs-pwc-sandbox-release</id>
+        <url>gs://pwc-sbox-tc01-maven-repo/release</url>
+    </repository>
+  </distributionManagement>
 
   <profiles>
     <!-- The following snapshot profile allows us to test teleport with
